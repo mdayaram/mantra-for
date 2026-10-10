@@ -41,4 +41,4 @@ There is no linter. Deploys are not run locally: Workers Builds deploys on merge
 
 ## Adding content
 
-Copy `content/mantras/_template.md`; full field reference and guidance on choosing needs and writing the "How it helps" section (what search reads most closely) are in `docs/adding-a-mantra.md`. Design rationale: `docs/superpowers/specs/2026-10-10-mantra-repository-design.md`.
+To add a mantra for the owner, use the project skill `.claude/skills/add-mantra/` (research → owner-approved draft → verify → PR). Manually: copy `content/mantras/_template.md`; full field reference and guidance on choosing needs and writing the "How it helps" section (what search reads most closely) are in `docs/adding-a-mantra.md`. Design rationale: `docs/superpowers/specs/2026-10-10-mantra-repository-design.md`.
