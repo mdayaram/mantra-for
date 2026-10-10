@@ -1,0 +1,30 @@
+- id: sadness
+  label: Sadness
+  synonyms: [sad, grief, grieving, sorrow, sorrowful, despondent, down, depressed, loss, mourning, heartbroken, lonely, hopeless]
+- id: fear
+  label: Fear & Anxiety
+  synonyms: [afraid, scared, fear, anxious, anxiety, worry, worried, panic, dread, nervous, overwhelmed, insecure]
+- id: anger
+  label: Anger
+  synonyms: [angry, rage, irritated, frustrated, resentment, annoyed, furious]
+- id: focus
+  label: Focus
+  synonyms: [concentrate, concentration, distracted, scattered, study, studying, work, attention]
+- id: clarity
+  label: Clarity
+  synonyms: [confused, confusion, foggy, unclear, decision, lost, understanding, wisdom, insight, stuck]
+- id: gratitude
+  label: Gratitude
+  synonyms: [grateful, thankful, thanks, appreciation, blessed]
+- id: peace
+  label: Peace
+  synonyms: [calm, peaceful, stillness, restless, agitated, stress, stressed, tranquil, serenity, equanimity]
+- id: protection
+  label: Protection
+  synonyms: [safe, safety, protect, danger, travel, obstacles, harm]
+- id: morning
+  label: Morning practice
+  synonyms: [dawn, sunrise, waking, wake, morning, start, day]
+- id: healing
+  label: Healing
+  synonyms: [sick, illness, ill, health, healing, recovery, pain, surgery]
