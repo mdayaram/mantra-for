@@ -4,7 +4,9 @@
    (`maha-mrityunjaya`) and becomes the URL `/m/<id>/`.
 2. Fill in the fields (reference below), delete optional ones you don't use.
 3. Run `npm test` — it validates every mantra file, need reference, and audio file.
-4. Commit and push to `main`; Cloudflare rebuilds and deploys.
+4. Commit on a branch and open a PR; merging to `main` makes Cloudflare rebuild and deploy.
+
+With Claude Code, the `add-mantra` skill (`.claude/skills/add-mantra/`) runs this whole flow, including research and finding a freely licensed recording.
 
 ## Fields
 
