@@ -1,0 +1,10 @@
+---
+import type { Need } from '../lib/schema';
+interface Props { needs: Need[]; active?: string }
+const { needs, active } = Astro.props;
+---
+<nav class="chips" aria-label="Browse by need">
+  {needs.map((n) => (
+    <a class="chip" href={`/need/${n.id}/`} data-need={n.id} aria-current={n.id === active ? 'true' : undefined}>{n.label}</a>
+  ))}
+</nav>

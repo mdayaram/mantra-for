@@ -1,0 +1,56 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getCatalog } from '../../lib/catalog';
+
+export async function getStaticPaths() {
+  const { mantras } = await getCatalog();
+  return mantras.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { needById } = await getCatalog();
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<Base title={`${d.name} · Mantra For`} description={d.summary}>
+  <article class="mantra">
+    <h1>{d.name}</h1>
+    {d.source && <p class="source">{d.source}</p>}
+    <div class="verse">
+      <p class="sanskrit" lang="sa">{d.sanskrit.trim()}</p>
+      {d.transliteration && <p class="iast" lang="sa-Latn">{d.transliteration.trim()}</p>}
+    </div>
+    {d.audio && (
+      <figure class="recording">
+        <audio controls loop preload="none" src={`/audio/${d.audio.file}`}></audio>
+        {d.audio.credit && (
+          <figcaption>
+            {d.audio.url ? <a href={d.audio.url}>{d.audio.credit}</a> : d.audio.credit}
+          </figcaption>
+        )}
+      </figure>
+    )}
+    {d.translations.map((t) => (
+      <section class="translation">
+        <h2>Translation</h2>
+        <p class="translation-text">{t.text.trim()}</p>
+        <p class="translation-label">{t.label}</p>
+      </section>
+    ))}
+    <div class="body"><Content /></div>
+    {d.word_meanings.length > 0 && (
+      <details class="collapsible">
+        <summary>Word meanings</summary>
+        <dl class="word-meanings">
+          {d.word_meanings.map((w) => (
+            <div><dt><span lang="sa">{w.sanskrit}</span> <span class="iast-inline">{w.iast}</span></dt><dd>{w.meaning}</dd></div>
+          ))}
+        </dl>
+      </details>
+    )}
+    <ul class="tags">
+      {d.needs.map((id) => <li><a href={`/?need=${id}`}>{needById.get(id)?.label ?? id}</a></li>)}
+    </ul>
+  </article>
+</Base>

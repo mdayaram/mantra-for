@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import MantraCard from '../components/MantraCard.astro';
+import NeedChips from '../components/NeedChips.astro';
+import { getCatalog } from '../lib/catalog';
+import { firstLine } from '../lib/text';
+
+const { mantras, usedNeeds, needById } = await getCatalog();
+---
+<Base title="Mantra For">
+  <form class="search" action="/" method="get" role="search">
+    <label for="q" class="visually-hidden">What do you need right now?</label>
+    <input id="q" name="q" type="search" maxlength="200" placeholder="What do you need right now?" autocomplete="off" />
+    <button type="submit">Search</button>
+  </form>
+  <NeedChips needs={usedNeeds} />
+  <p class="status" role="status" aria-live="polite" hidden></p>
+  <ul class="results" id="results">
+    {mantras.map((m) => (
+      <MantraCard id={m.id} name={m.data.name} firstLine={firstLine(m.data.sanskrit)} summary={m.data.summary}
+        needs={m.data.needs.map((n) => needById.get(n)!)} hasAudio={Boolean(m.data.audio)} />
+    ))}
+  </ul>
+  <script>
+    import { initHome } from '../scripts/home';
+    initHome();
+  </script>
+</Base>
