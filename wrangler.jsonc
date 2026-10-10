@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mantra-for",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "mantra-for.noj.cc", "custom_domain": true }],
+  "ai": { "binding": "AI" },
+  // No id: wrangler provisions the namespace on first deploy and writes it back.
+  "kv_namespaces": [{ "binding": "EMBEDDINGS" }],
+  "observability": { "enabled": true },
+  // Bindings for branch Preview builds (Workers Builds runs `wrangler preview` on non-main branches).
+  "previews": {
+    "ai": { "binding": "AI" }
+  }
+}

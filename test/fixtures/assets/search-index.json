@@ -1,0 +1,10 @@
+{
+  "needs": [
+    { "id": "sadness", "label": "Sadness", "synonyms": ["sad", "grief"] },
+    { "id": "clarity", "label": "Clarity", "synonyms": ["confused"] }
+  ],
+  "mantras": [
+    { "id": "comfort", "name": "Comfort Mantra", "summary": "For grief.", "needs": ["sadness"], "firstLine": "ॐ", "hasAudio": false, "searchText": "Comfort Mantra\nFor grief.\nSadness", "hash": "hash-comfort" },
+    { "id": "light", "name": "Light Mantra", "summary": "For clarity.", "needs": ["clarity"], "firstLine": "ॐ", "hasAudio": true, "searchText": "Light Mantra\nFor clarity.\nClarity", "hash": "hash-light" }
+  ]
+}

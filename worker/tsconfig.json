@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2024",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2024"],
+    "types": [],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./**/*.ts",
+    "../worker-configuration.d.ts",
+    "../src/lib/text.ts",
+    "../src/lib/schema.ts",
+    "../src/lib/search-index.ts",
+    "../src/lib/keyword.ts",
+    "../src/lib/semantic.ts"
+  ]
+}
