@@ -1,0 +1,185 @@
+/* Pre-dawn palette: pale sky and indigo ink by day, night indigo after dark. Gold is the only accent. */
+:root {
+  --sky: #edf0f5;
+  --ink: #1d2140;
+  --muted: #5b6180;
+  --rule: #d3d8e3;
+  --gold: #8c600c;
+  --gold-wash: #e9dcbc;
+  --focus: #3b4fb8;
+
+  --serif: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+  --deva: 'Noto Serif Devanagari', 'Kohinoor Devanagari', serif;
+  --measure: 38rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #161a2e;
+    --ink: #e3e5ef;
+    --muted: #9da3be;
+    --rule: #2a3050;
+    --gold: #ddb15a;
+    --gold-wash: #3a3523;
+    --focus: #9fb0ff;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--sky);
+  color: var(--ink);
+  font: 1.125rem/1.65 var(--serif);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+main, .site-header {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main { padding-bottom: 5rem; }
+
+a { color: inherit; text-decoration-color: var(--gold); text-underline-offset: 0.18em; }
+a:hover { color: var(--gold); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 { font-weight: 600; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.25rem; letter-spacing: -0.01em; }
+
+[lang='sa'] { font-family: var(--deva); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Header */
+.site-header { padding-top: 1.5rem; padding-bottom: 1rem; }
+.wordmark {
+  font-style: italic;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+/* Search */
+.search { display: flex; align-items: baseline; gap: 0.75rem; margin: 3rem 0 1.5rem; }
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  border-bottom: 2px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: italic 1.75rem/1.3 var(--serif);
+  padding: 0.25rem 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search input::placeholder { color: var(--muted); opacity: 0.8; }
+.search input:focus { outline: none; border-bottom-color: var(--gold); }
+.search input::-webkit-search-cancel-button { display: none; }
+.search button {
+  font: 600 1rem var(--serif);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+}
+.search button:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Need chips */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 2rem; }
+.chip {
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.2rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink);
+}
+.chip:hover { border-color: var(--gold); color: var(--ink); }
+.chip[aria-current='true'] { background: var(--gold-wash); border-color: var(--gold); }
+
+.status { color: var(--muted); font-style: italic; margin: 0 0 1rem; }
+
+/* Result list */
+.results { list-style: none; margin: 0; padding: 0; }
+.mantra-card { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+.mantra-card > a { display: block; text-decoration: none; }
+.mantra-card h2 { font-size: 1.4rem; }
+.mantra-card > a:hover h2 { color: var(--gold); }
+.audio-mark { font-size: 0.9rem; }
+.sanskrit-line { font-size: 1.3rem; line-height: 1.8; margin: 0.35rem 0 0.25rem; }
+.summary { margin: 0; }
+
+.tags { list-style: none; padding: 0; margin: 0.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0 0.9rem; color: var(--muted); font-style: italic; font-size: 1rem; }
+
+/* Mantra page */
+.mantra h1 { margin-top: 2rem; }
+.source { color: var(--muted); font-style: italic; margin: 0.4rem 0 0; }
+
+.verse { margin: 3rem 0; text-align: center; }
+.sanskrit {
+  font-size: clamp(1.45rem, 5.2vw, 2rem);
+  line-height: 1.95;
+  white-space: pre-line;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.iast {
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  color: var(--muted);
+  margin: 1.5rem 0 0;
+}
+
+.recording { margin: 0 0 3rem; }
+.recording audio { width: 100%; }
+.recording figcaption { font-size: 0.95rem; color: var(--muted); margin-top: 0.4rem; }
+
+.mantra h2 { font-size: 1.35rem; margin: 2.5rem 0 0.75rem; }
+.translation-text { white-space: pre-line; margin: 0; font-size: 1.2rem; }
+.translation-label { color: var(--muted); font-style: italic; font-size: 1rem; margin: 0.5rem 0 0; }
+
+.body ul { padding-left: 1.2rem; }
+.body li + li { margin-top: 0.4rem; }
+
+details.collapsible { border-top: 1px solid var(--rule); margin-top: 2.5rem; padding-top: 1rem; }
+details.collapsible > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+details.collapsible > summary:hover { color: var(--gold); }
+details.collapsible[open] > summary { margin-bottom: 0.75rem; }
+
+.word-meanings { margin: 0; }
+.word-meanings div { display: grid; grid-template-columns: minmax(7rem, auto) 1fr; gap: 0 1rem; padding: 0.35rem 0; }
+.word-meanings dt { white-space: nowrap; }
+.word-meanings dd { margin: 0; }
+.iast-inline { font-style: italic; color: var(--muted); }
+
+.mantra > .tags { margin-top: 3rem; }
+
+@media (max-width: 30rem) {
+  h1 { font-size: 1.9rem; }
+  .search { flex-direction: column; align-items: stretch; margin-top: 2rem; }
+  .search input { font-size: 1.45rem; }
+  .search button { align-self: flex-start; }
+  .word-meanings div { grid-template-columns: 1fr; }
+}
+.need-title { margin: 2.5rem 0 1.5rem; }

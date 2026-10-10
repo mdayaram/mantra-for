@@ -1,0 +1,13 @@
+---
+import type { Need } from '../lib/schema';
+interface Props { id: string; name: string; firstLine: string; summary: string; needs: Need[]; hasAudio: boolean }
+const { id, name, firstLine, summary, needs, hasAudio } = Astro.props;
+---
+<li class="mantra-card" data-id={id} data-needs={needs.map((n) => n.id).join(' ')}>
+  <a href={`/m/${id}/`}>
+    <h2>{name}{hasAudio && <span class="audio-mark" role="img" aria-label="has recording" title="Has recording"> 🔊</span>}</h2>
+    <p class="sanskrit-line" lang="sa">{firstLine}</p>
+    <p class="summary">{summary}</p>
+  </a>
+  <ul class="tags">{needs.map((n) => <li>{n.label}</li>)}</ul>
+</li>

@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import MantraCard from '../../components/MantraCard.astro';
+import NeedChips from '../../components/NeedChips.astro';
+import { getCatalog } from '../../lib/catalog';
+import { firstLine } from '../../lib/text';
+
+export async function getStaticPaths() {
+  const { usedNeeds } = await getCatalog();
+  return usedNeeds.map((need) => ({ params: { id: need.id }, props: { need } }));
+}
+
+const { need } = Astro.props;
+const { mantras, usedNeeds, needById } = await getCatalog();
+const matching = mantras.filter((m) => m.data.needs.includes(need.id));
+---
+<Base title={`${need.label} · Mantra For`}>
+  <h1 class="need-title">Mantras for {need.label.toLowerCase()}</h1>
+  <NeedChips needs={usedNeeds} active={need.id} />
+  <ul class="results">
+    {matching.map((m) => (
+      <MantraCard id={m.id} name={m.data.name} firstLine={firstLine(m.data.sanskrit)} summary={m.data.summary}
+        needs={m.data.needs.map((n) => needById.get(n)!)} hasAudio={Boolean(m.data.audio)} />
+    ))}
+  </ul>
+</Base>

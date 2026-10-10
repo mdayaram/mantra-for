@@ -1,0 +1,26 @@
+---
+import '@fontsource/noto-serif-devanagari/400.css';
+import '@fontsource/noto-serif-devanagari/600.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/eb-garamond/600.css';
+import '../styles/global.css';
+
+interface Props { title: string; description?: string }
+const { title, description = 'Mantras and meditations, searchable by what you need.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header"><a href="/" class="wordmark">Mantra For</a></header>
+    <main><slot /></main>
+  </body>
+</html>
