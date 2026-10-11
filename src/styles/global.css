@@ -183,3 +183,11 @@ details.collapsible[open] > summary { margin-bottom: 0.75rem; }
   .word-meanings div { grid-template-columns: 1fr; }
 }
 .need-title { margin: 2.5rem 0 1.5rem; }
+
+.offline-status {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 16px 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

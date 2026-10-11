@@ -3,11 +3,18 @@ import type { SearchIndex } from '../lib/search-index';
 import { parseState, stateToSearch, type UrlState } from '../lib/url-state';
 
 let indexPromise: Promise<SearchIndex> | undefined;
-const loadIndex = () => (indexPromise ??= fetch('/search-index.json').then((r) => r.json() as Promise<SearchIndex>));
+const loadIndex = () => (indexPromise ??= fetch('/search-index.json').then((r) => {
+  if (!r.ok) throw new Error(`search index ${r.status}`);
+  return r.json() as Promise<SearchIndex>;
+}).catch((error) => {
+  indexPromise = undefined;
+  throw error;
+}));
 
 async function search(q: string): Promise<Scored[]> {
   try {
-    const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+    if (!navigator.onLine) throw new Error('offline');
+    const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`, { signal: AbortSignal.timeout(4000) });
     if (!res.ok) throw new Error(`search ${res.status}`);
     return ((await res.json()) as { results: Scored[] }).results;
   } catch {
@@ -53,7 +60,13 @@ export function initHome(): void {
       input.value = state.q;
       status.textContent = 'Searching…';
       status.hidden = false;
-      const results = await search(state.q);
+      let results: Scored[];
+      try {
+        results = await search(state.q);
+      } catch {
+        if (run === generation) show(null, 'Search is unavailable. Browse the mantras or pick a feeling above.');
+        return;
+      }
       if (run !== generation) return; // a newer navigation superseded this one
       const ids = results.map((r) => r.id);
       show(ids, ids.length ? `${ids.length} for “${state.q}”` : 'Nothing matched — try different words, or pick a feeling above.');

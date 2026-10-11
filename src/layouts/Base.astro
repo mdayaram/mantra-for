@@ -17,10 +17,18 @@ const { title, description = 'Mantras and meditations, searchable by what you ne
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+    <meta name="theme-color" content="#1d2140" />
     <title>{title}</title>
   </head>
   <body>
     <header class="site-header"><a href="/" class="wordmark">Mantra For</a></header>
     <main><slot /></main>
+    <footer class="offline-status" aria-live="polite" hidden></footer>
+    <script>
+      import { initPwa } from '../scripts/pwa';
+      initPwa();
+    </script>
   </body>
 </html>
