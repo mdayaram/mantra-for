@@ -48,7 +48,7 @@ translations:
       in whom the entire world appears
       like a snake appears on a rope.
 source: Attributed to Ādi Śaṅkara; three verses (the closing phala-śruti verse is omitted)
-needs: [morning, peace, fear, clarity]
+needs: [morning, peace, fear, clarity, vedanta]
 summary: Three dawn verses that begin the day by remembering the awareness untouched by everything that happens in it.
 audio:
   file: pratah-smarana.mp3
