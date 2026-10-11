@@ -1,6 +1,6 @@
-# CLAUDE.md
+# Repository agent instructions
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides shared guidance to Claude Code and Codex when working in this repository. `AGENTS.md` is a symlink to this file.
 
 Personal site of mantras searchable by need, live at <https://mantra-for.noj.cc>. Astro (static output) served by a single Cloudflare Worker that also answers `/api/search`.
 
