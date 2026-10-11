@@ -127,8 +127,7 @@ Used by the Worker (fallback + boost) and the browser (offline fallback).
   from the index. If `/api/search` fails, the browser runs the keyword ranker
   over the index.
 - **Result card** — name, first Sanskrit line, summary, need tags, audio marker.
-- **`/m/<id>` Mantra** — large Devanagari, IAST, audio player (loop on by
-  default) directly below the text, translations, "How it helps", "How to
+- **`/m/<id>` Mantra** — large Devanagari, IAST, audio player (plays once) directly below the text, translations, "How it helps", "How to
   practice"; word meanings and Notes in collapsible sections. Need tags link to
   `/?need=…`.
 - **`/need/<id>`** — static list of mantras for that need (no-JS fallback for

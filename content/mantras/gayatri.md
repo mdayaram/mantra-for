@@ -49,7 +49,7 @@ The three opening words (*bhūr bhuvaḥ svaḥ*: earth, atmosphere, sky) place 
 ## How to practice
 
 - Traditionally recited at the junctions of the day (*sandhyā*) — dawn, noon, and dusk — and above all at sunrise, facing east.
-- Sit upright. Chant aloud, softly, or silently; 3, 11, or 108 repetitions (with a mālā) are common counts. The recording here loops, so you can chant along with it.
+- Sit upright. Chant aloud, softly, or silently; 3, 11, or 108 repetitions (with a mālā) are common counts. You can chant along with the recording and replay it as needed.
 - Pause briefly after ॐ and after *svaḥ*; one line per breath is a natural pace for the verse itself.
 - For focus before work or study, a short round of 11 with attention on the meaning of the last line works well.
 - In orthodox lineages the mantra is received through initiation (*upanayana*); many contemporary teachers share it openly.
