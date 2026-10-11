@@ -11,8 +11,8 @@ transliteration: |
   bhargo devasya dhīmahi
   dhiyo yo naḥ pracodayāt
 translations:
-  - label: After S. Radhakrishnan (1953)
-    text: We meditate on the adorable glory of the radiant sun; may She inspire our intelligence.
+  - label: Poetic translation
+    text: Om. Earth, atmosphere, heaven. Let us contemplate that excellent radiance of the god Savitṛ, who illuminates our thoughts.
 word_meanings:
   - { sanskrit: "ॐ", iast: "oṃ", meaning: "the praṇava, the sacred syllable" }
   - { sanskrit: "भूः", iast: "bhūḥ", meaning: "earth" }
@@ -60,4 +60,4 @@ The three opening words (*bhūr bhuvaḥ svaḥ*: earth, atmosphere, sky) place 
 
 In the last line धियः + यः shows visarga sandhi: *-aḥ* → *-o* before a voiced sound, giving धियो यो.
 
-The verse's own grammar is masculine — यः and प्रचोदयात् refer back to सवितुः देवस्य — so translations render it "he"; the feminine "She" above follows the later devotional identification of the mantra with the goddess Gāyatrī, *Veda-mātā*, the Mother of the Vedas.
+The verse's own grammar is masculine — यः and प्रचोदयात् refer back to सवितुः देवस्य. The "who" in the translation refers to Savitṛ. "Illuminates our thoughts" is a poetic rendering of प्रचोदयात्, literally "may he impel or inspire": it draws on the image of radiance and expresses the prayer as an affirmation. The later devotional tradition also identifies the mantra with the goddess Gāyatrī, *Veda-mātā*, the Mother of the Vedas.
