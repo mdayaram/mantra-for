@@ -28,3 +28,6 @@
 - id: healing
   label: Healing
   synonyms: [sick, illness, ill, health, healing, recovery, pain, surgery]
+- id: vedanta
+  label: Vedānta & Study
+  synonyms: [vedanta, advaita, nondual, nonduality, study, scripture, scriptures, upanishad, upanishads, inquiry, enquiry, sadhana, seeker, spiritual, liberation, moksha, brahman, self]
