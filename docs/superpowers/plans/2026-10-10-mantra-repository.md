@@ -1458,7 +1458,7 @@ The three opening words (*bhūr bhuvaḥ svaḥ*: earth, atmosphere, sky) place 
 ## How to practice
 
 - Traditionally recited at the junctions of the day (*sandhyā*) — dawn, noon, and dusk — and above all at sunrise, facing east.
-- Sit upright. Chant aloud, softly, or silently; 3, 11, or 108 repetitions (with a mālā) are common counts. The recording here loops, so you can chant along with it.
+- Sit upright. Chant aloud, softly, or silently; 3, 11, or 108 repetitions (with a mālā) are common counts. You can chant along with the recording and replay it as needed.
 - Pause briefly after ॐ and after *svaḥ*; one line per breath is a natural pace for the verse itself.
 - For focus before work or study, a short round of 11 with attention on the meaning of the last line works well.
 - In orthodox lineages the mantra is received through initiation (*upanayana*); many contemporary teachers share it openly.
@@ -1859,7 +1859,7 @@ const d = entry.data;
     {d.transliteration && <p class="iast" lang="sa-Latn">{d.transliteration.trim()}</p>}
     {d.audio && (
       <figure class="recording">
-        <audio controls loop preload="none" src={`/audio/${d.audio.file}`}></audio>
+        <audio controls preload="none" src={`/audio/${d.audio.file}`}></audio>
         {d.audio.credit && (
           <figcaption>
             {d.audio.url ? <a href={d.audio.url}>{d.audio.credit}</a> : d.audio.credit}
@@ -2162,7 +2162,7 @@ Using Playwright (or by hand) at 390×844 and 1280×800, verify:
 3. Searching `zebra crossing` → status "Nothing matched…" (or, in semantic mode, only genuinely close results) — no errors, cards hidden accordingly.
 4. Searching `foggy mind before work` → Gāyatrī listed (keyword: `foggy`→clarity, `work`→focus).
 5. `/?need=unknown` → empty-state message, no crash. `/?q=` → all mantras.
-6. `/m/gayatri/` → Devanagari, IAST, looping audio player, translation, sections, Notes and Word meanings collapsed. No horizontal scroll at 320px width.
+6. `/m/gayatri/` → Devanagari, IAST, audio player that plays once, translation, sections, Notes and Word meanings collapsed. No horizontal scroll at 320px width.
 7. With JS disabled, chips navigate to `/need/<id>/` pages.
 
 Stop the dev server afterwards.

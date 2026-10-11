@@ -23,7 +23,7 @@ const d = entry.data;
     </div>
     {d.audio && (
       <figure class="recording">
-        <audio controls loop preload="none" src={`/audio/${d.audio.file}`}></audio>
+        <audio controls preload="none" src={`/audio/${d.audio.file}`}></audio>
         {d.audio.credit && (
           <figcaption>
             {d.audio.url ? <a href={d.audio.url}>{d.audio.credit}</a> : d.audio.credit}
