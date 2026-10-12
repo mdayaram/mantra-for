@@ -14,9 +14,16 @@ async function inventory(directory, prefix = '') {
 const files = await inventory('dist');
 const template = await readFile('scripts/service-worker.js', 'utf8');
 const hash = createHash('sha256').update(template);
-for (const file of files) hash.update(file).update(await readFile(`dist/${file}`));
-const urls = files.map((file) => `/${file.replace(/(^|\/)index\.html$/, '$1')}`);
+const entries = [];
+for (const file of files) {
+  const bytes = await readFile(`dist/${file}`);
+  hash.update(file).update(bytes);
+  entries.push({
+    url: `/${file.replace(/(^|\/)index\.html$/, '$1')}`,
+    revision: createHash('sha256').update(bytes).digest('hex'),
+  });
+}
 await writeFile('dist/sw.js', template
   .replace('__CACHE_NAME__', JSON.stringify(`mantra-for-${hash.digest('hex').slice(0, 16)}`))
-  .replace('__PRECACHE_URLS__', JSON.stringify(urls)));
-console.log(`PWA: precaching ${urls.length} files, including all recordings.`);
+  .replace('__PRECACHE_ENTRIES__', JSON.stringify(entries)));
+console.log(`PWA: precaching ${entries.length} files, including all recordings.`);

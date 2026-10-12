@@ -1,15 +1,39 @@
 /* Build substitutes the cache name and complete static inventory. */
 const CACHE_NAME = __CACHE_NAME__;
-const PRECACHE_URLS = __PRECACHE_URLS__;
+const PRECACHE_ENTRIES = __PRECACHE_ENTRIES__;
+const REVISION_KEY = '/__precache-revisions__';
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
     try {
-      // Bound concurrent downloads; request complete audio files, never partial ranges.
-      for (let i = 0; i < PRECACHE_URLS.length; i += 8) {
-        await cache.addAll(PRECACHE_URLS.slice(i, i + 8).map((url) => new Request(url, { cache: 'reload' })));
+      // Reuse only files whose build hashes match; URLs alone cannot prove freshness.
+      const previous = [];
+      for (const name of await caches.keys()) {
+        if (!name.startsWith('mantra-for-') || name === CACHE_NAME) continue;
+        const oldCache = await caches.open(name);
+        const metadata = await oldCache.match(REVISION_KEY);
+        if (metadata) previous.push({ cache: oldCache, revisions: await metadata.json() });
       }
+      // Bound concurrent work; request complete audio files, never partial ranges.
+      for (let i = 0; i < PRECACHE_ENTRIES.length; i += 8) {
+        const results = await Promise.allSettled(PRECACHE_ENTRIES.slice(i, i + 8).map(async ({ url, revision }) => {
+          for (const old of previous) {
+            if (old.revisions[url] !== revision) continue;
+            const response = await old.cache.match(url);
+            if (response) {
+              await cache.put(url, response);
+              return;
+            }
+          }
+          await cache.add(new Request(new URL(url, self.location.origin), { cache: 'reload' }));
+        }));
+        const failure = results.find((result) => result.status === 'rejected');
+        if (failure) throw failure.reason;
+      }
+      await cache.put(REVISION_KEY, new Response(JSON.stringify(
+        Object.fromEntries(PRECACHE_ENTRIES.map(({ url, revision }) => [url, revision])),
+      ), { headers: { 'Content-Type': 'application/json' } }));
     } catch (error) {
       await caches.delete(CACHE_NAME);
       throw error;
